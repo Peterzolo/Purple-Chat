@@ -2,6 +2,8 @@ const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
 
+const {addUser, deleteUser, getUser, getUsersInRoom } = require('./utilities/userHelper')
+
 
 const router = require('./route/chatRoute')
 
@@ -13,10 +15,31 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 io.on('connection', (socket) => {
-    console.log('We have a new User connection');
+    socket.on('join', ({ name, room }, callback) => {
+        const { error, user } = addUser({ id: socket.id, name, room });
+
+        if (error) return callback(error);
+      
+        socket.emit('message', { user: 'admin', text: `${user.name}, welcome to the ${user.room} room` });
+        socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has just joined ${user.room} room` });
+        
+
+        socket.join(user.room);
+
+        callback();
+
+    });
+
+    socket.on('message', (message, callback) => {
+        const user = getUser(socket.id);
+
+        io.to(user.room).emit('message', { user: user.name, text: message });
+
+        callback();
+    });
 
     socket.on('disconnect', () => {
-        console.log('User had left')
+  
     })
 });
 
