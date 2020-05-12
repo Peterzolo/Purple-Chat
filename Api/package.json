@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "api purple chat",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Peter Solomon",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^5.2.0",
