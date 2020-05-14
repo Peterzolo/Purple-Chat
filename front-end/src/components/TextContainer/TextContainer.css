@@ -5,10 +5,10 @@
   color: white;
   height: 60%;
   justify-content: space-between;
-  background-image: url(/images/andrew-neel-9moikpaufvg-unsplash.jpg);
-  background-position: center;
+  /* background-image: url(/images/andrew-neel-9moikpaufvg-unsplash.jpg); */
+  /* background-position: center;
   background-size: 50%;
-  border-radius: 10px;
+  border-radius: 10px; */
 }
 
 .activeContainer {

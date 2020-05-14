@@ -12,6 +12,8 @@
   font-size: 1.2em;
   font-display: justify;
   background-color: #ffd6e7;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 40px;
 }
 
 input:focus, textarea:focus, select:focus{
