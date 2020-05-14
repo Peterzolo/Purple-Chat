@@ -14,7 +14,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
-io.on('connection', (socket) => {
+io.on('connect', (socket) => {
     socket.on('join', ({ name, room }, callback) => {
         const { error, user } = addUser({ id: socket.id, name, room });
 
@@ -25,6 +25,10 @@ io.on('connection', (socket) => {
         
 
         socket.join(user.room);
+
+        io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+
+
 
         callback();
 
@@ -46,6 +50,12 @@ io.on('connection', (socket) => {
     } )
 
     socket.on('disconnect', () => {
+        const user = deleteUser(socket.id);
+
+        if (user) {
+            io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
+            io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+        }
   
     })
 });
