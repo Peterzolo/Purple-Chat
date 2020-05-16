@@ -8,13 +8,13 @@ const {addUser, deleteUser, getUser, getUsersInRoom } = require('./utilities/use
 const router = require('./route/chatRoute')
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;     
 
 const app = express();
-const server = http.createServer(app);
+const server = http.createServer(app);      
 const io = socketio(server);
 
-io.on('connect', (socket) => {
+io.on('connect', (socket) => {     
     socket.on('join', ({ name, room }, callback) => {
         const { error, user } = addUser({ id: socket.id, name, room });
 
@@ -50,7 +50,7 @@ io.on('connect', (socket) => {
     } )
 
     socket.on('disconnect', () => {
-        const user = deleteUser(socket.id);
+        const user = deleteUser(socket.id);     
 
         if (user) {
             io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });

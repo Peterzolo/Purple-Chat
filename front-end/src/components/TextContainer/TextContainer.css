@@ -1,25 +1,36 @@
 .textContainer {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
-  color: white;
-  height: 60%;
-  justify-content: space-between;
-  /* background-image: url(/images/andrew-neel-9moikpaufvg-unsplash.jpg); */
-  /* background-position: center;
-  background-size: 50%;
-  border-radius: 10px; */
+  margin-right: 200px;
+  padding-top: 10px;
+  color: rgb(19, 126, 46);
+  padding:10px;
+  /* height: 60%; */
+  /* justify-content: space-between; */
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 30px;
+ 
+}
+
+.header-room{
+  color:#fff ;
+  font-weight: 600;
+  background-color: #444;
+  padding: 10px;
+  border-radius: 20px 20px 0px 0px;
 }
 
 .activeContainer {
   display: flex;
   align-items: center;
   margin-bottom: 50%;
+ 
 }
 
 .activeItem {
   display: flex;
   align-items: center;
+ 
 }
 
 .activeContainer img {

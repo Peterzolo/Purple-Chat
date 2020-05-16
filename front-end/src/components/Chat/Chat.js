@@ -67,8 +67,6 @@ const Chat = ({ location }) => {
           <MessageForm message={message} setMessage={setMessage} sendMessage={sendMessage} />
       </div>
       <TextContainer users={users} />
-      
-     
     </div>
   );
 }
